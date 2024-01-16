@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.bohunapps.moviesappcompose.MainViewModel
 import com.bohunapps.moviesappcompose.Screens.DetailsScreen
 import com.bohunapps.moviesappcompose.Screens.MainScreen
 import com.bohunapps.moviesappcompose.Screens.SplashScreen
@@ -17,13 +18,13 @@ sealed class Destination(val route: String) {
 }
 
 @Composable
-fun SetupNavHost(navController: NavHostController) {
+fun SetupNavHost(navController: NavHostController, viewModel: MainViewModel) {
     NavHost(navController = navController, startDestination = Destination.Splash.route) {
         composable(Destination.Splash.route){
-            SplashScreen(navController)
+            SplashScreen(navController, viewModel)
         }
         composable(Destination.Main.route){
-            MainScreen()
+            MainScreen(navController, viewModel)
         }
         composable(Destination.Details.route){
             DetailsScreen()
