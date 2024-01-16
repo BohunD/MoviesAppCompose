@@ -8,4 +8,5 @@ interface ApiService {
 
     @GET("/shows")
     suspend fun getAllMovies(): Response<List<Movie>>
+
 }
