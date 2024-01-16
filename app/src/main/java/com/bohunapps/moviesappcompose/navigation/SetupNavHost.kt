@@ -26,8 +26,8 @@ fun SetupNavHost(navController: NavHostController, viewModel: MainViewModel) {
         composable(Destination.Main.route){
             MainScreen(navController, viewModel)
         }
-        composable(Destination.Details.route){
-            DetailsScreen()
+        composable(Destination.Details.route + "/{Id}"){ backStackEntry ->
+            DetailsScreen(navController, viewModel, itemId = backStackEntry.arguments?.getString("Id")?:"1")
         }
     }
 }
